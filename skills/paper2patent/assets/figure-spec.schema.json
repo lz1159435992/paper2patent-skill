@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patent diagram specification",
+  "type": "object",
+  "required": [
+    "diagram_type",
+    "nodes"
+  ],
+  "properties": {
+    "diagram_type": {
+      "enum": [
+        "flowchart",
+        "block"
+      ]
+    },
+    "figure_no": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "layout": {
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "show_title": {
+      "type": "boolean",
+      "default": true
+    },
+    "show_figure_no": {
+      "type": "boolean",
+      "default": true
+    },
+    "font_family": {
+      "type": "string"
+    },
+    "box_w": {
+      "type": "number",
+      "minimum": 1
+    },
+    "box_h": {
+      "type": "number",
+      "minimum": 1
+    },
+    "width": {
+      "type": "number",
+      "minimum": 1
+    },
+    "height": {
+      "type": "number",
+      "minimum": 1
+    },
+    "gap": {
+      "type": "number",
+      "minimum": 1
+    },
+    "margin": {
+      "type": "number",
+      "minimum": 1
+    },
+    "font_size": {
+      "type": "number",
+      "minimum": 1
+    },
+    "wrap_width": {
+      "type": "number",
+      "minimum": 1
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/node"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          },
+          {
+            "$ref": "#/$defs/edge"
+          }
+        ]
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/annotation"
+      }
+    }
+  },
+  "$defs": {
+    "node": {
+      "type": "object",
+      "required": [
+        "id",
+        "label"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "shape": {
+          "enum": [
+            "process",
+            "decision",
+            "terminator"
+          ]
+        },
+        "rounded": {
+          "type": "boolean"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "w": {
+          "type": "number",
+          "minimum": 1
+        },
+        "h": {
+          "type": "number",
+          "minimum": 1
+        },
+        "font_size": {
+          "type": "number",
+          "minimum": 1
+        },
+        "wrap_width": {
+          "type": "number",
+          "minimum": 1
+        }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "required": [
+        "source",
+        "target"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "label_x": {
+          "type": "number"
+        },
+        "label_y": {
+          "type": "number"
+        },
+        "route": {
+          "enum": [
+            "bottom_return"
+          ]
+        },
+        "source_port": {
+          "enum": ["top", "bottom", "left", "right"]
+        },
+        "target_port": {
+          "enum": ["top", "bottom", "left", "right"]
+        },
+        "points": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "required": [
+        "x",
+        "y",
+        "text"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "text": {
+          "type": "string"
+        },
+        "font_size": {
+          "type": "number",
+          "minimum": 1
+        },
+        "wrap_width": {
+          "type": "number",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

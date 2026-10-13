@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.13']
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check release contents and provenance
+        run: python -X utf8 -B tools/check_release.py
+      - name: Run tool regression tests
+        run: python -X utf8 -B skills/paper2patent/scripts/test_tools.py
+      - name: Run synthetic integration tests
+        run: python -X utf8 -B skills/paper2patent/scripts/test_acceptance.py
+      - name: Check whitespace
+        run: git diff --check

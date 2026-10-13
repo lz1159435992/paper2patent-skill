@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.svg text eol=lf
+# Preserve the upstream archive's intentional fence whitespace.
+skills/paper2patent/references/pro-prompt.md whitespace=-blank-at-eol

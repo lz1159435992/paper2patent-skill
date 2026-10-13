@@ -1,0 +1,85 @@
+{
+  "diagram_type": "flowchart",
+  "figure_no": "图1",
+  "title": "合成传感器窗口处理流程",
+  "nodes": [
+    {
+      "id": "s101",
+      "label": "S101 获取传感器记录",
+      "shape": "process"
+    },
+    {
+      "id": "s102",
+      "label": "S102 过滤并排序",
+      "shape": "process"
+    },
+    {
+      "id": "s103",
+      "label": "S103 划分完整窗口",
+      "shape": "process"
+    },
+    {
+      "id": "s104",
+      "label": "S104 计算窗口均值",
+      "shape": "process"
+    },
+    {
+      "id": "s105",
+      "label": "S105 与配置阈值比较",
+      "shape": "process"
+    },
+    {
+      "id": "s106",
+      "label": "S106 设置报警标志",
+      "shape": "process"
+    },
+    {
+      "id": "s107",
+      "label": "S107 记录结果\n还有窗口？",
+      "shape": "decision"
+    },
+    {
+      "id": "end",
+      "label": "结束",
+      "shape": "terminator"
+    }
+  ],
+  "edges": [
+    [
+      "s101",
+      "s102"
+    ],
+    [
+      "s102",
+      "s103"
+    ],
+    [
+      "s103",
+      "s104"
+    ],
+    [
+      "s104",
+      "s105"
+    ],
+    [
+      "s105",
+      "s106"
+    ],
+    [
+      "s106",
+      "s107"
+    ],
+    {
+      "source": "s107",
+      "target": "s104",
+      "label": "是",
+      "source_port": "left",
+      "target_port": "left"
+    },
+    {
+      "source": "s107",
+      "target": "end",
+      "label": "否"
+    }
+  ]
+}

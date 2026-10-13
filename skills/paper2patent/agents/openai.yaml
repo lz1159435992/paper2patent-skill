@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper to Patent"
+  short_description: "Draft patents and check claims with traceable figures"
+  default_prompt: "Use $paper2patent to draft or revise my Chinese patent text and figures, checking source support and claim consistency."

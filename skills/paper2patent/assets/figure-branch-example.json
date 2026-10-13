@@ -1,0 +1,179 @@
+{
+  "figure_no": "图1",
+  "title": "分支、汇聚与反馈布线示例",
+  "diagram_type": "flowchart",
+  "nodes": [
+    {
+      "id": "start",
+      "label": "开始",
+      "shape": "terminator",
+      "x": 260,
+      "y": 110,
+      "w": 180
+    },
+    {
+      "id": "input",
+      "label": "S101 获取输入",
+      "x": 220,
+      "y": 230
+    },
+    {
+      "id": "decision",
+      "label": "S102 是否满足条件",
+      "shape": "decision",
+      "x": 220,
+      "y": 350
+    },
+    {
+      "id": "a",
+      "label": "S103 分支处理A",
+      "x": 20,
+      "y": 520
+    },
+    {
+      "id": "b",
+      "label": "S104 分支处理B",
+      "x": 420,
+      "y": 520
+    },
+    {
+      "id": "merge",
+      "label": "S105 汇聚结果",
+      "x": 220,
+      "y": 660
+    },
+    {
+      "id": "end",
+      "label": "结束",
+      "shape": "terminator",
+      "x": 260,
+      "y": 810,
+      "w": 180
+    }
+  ],
+  "edges": [
+    [
+      "start",
+      "input"
+    ],
+    [
+      "input",
+      "decision"
+    ],
+    {
+      "source": "decision",
+      "target": "a",
+      "label": "是",
+      "label_x": 165,
+      "label_y": 470,
+      "points": [
+        [
+          220,
+          382
+        ],
+        [
+          150,
+          382
+        ],
+        [
+          150,
+          520
+        ]
+      ]
+    },
+    {
+      "source": "decision",
+      "target": "b",
+      "label": "否",
+      "label_x": 565,
+      "label_y": 470,
+      "points": [
+        [
+          480,
+          382
+        ],
+        [
+          550,
+          382
+        ],
+        [
+          550,
+          520
+        ]
+      ]
+    },
+    {
+      "source": "a",
+      "target": "merge",
+      "points": [
+        [
+          150,
+          584
+        ],
+        [
+          150,
+          625
+        ],
+        [
+          350,
+          625
+        ],
+        [
+          350,
+          660
+        ]
+      ]
+    },
+    {
+      "source": "b",
+      "target": "merge",
+      "points": [
+        [
+          550,
+          584
+        ],
+        [
+          550,
+          625
+        ],
+        [
+          350,
+          625
+        ],
+        [
+          350,
+          660
+        ]
+      ]
+    },
+    [
+      "merge",
+      "end"
+    ],
+    {
+      "source": "merge",
+      "target": "input",
+      "label": "反馈",
+      "label_x": 755,
+      "label_y": 500,
+      "points": [
+        [
+          480,
+          692
+        ],
+        [
+          740,
+          692
+        ],
+        [
+          740,
+          262
+        ],
+        [
+          480,
+          262
+        ]
+      ]
+    }
+  ]
+}

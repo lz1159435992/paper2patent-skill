@@ -1,0 +1,60 @@
+{
+  "sources": [],
+  "features": [],
+  "effects": [],
+  "terms": [],
+  "figure_edges": [],
+  "unresolved": [],
+  "record_fields": {
+    "source": [
+      "source_id",
+      "path",
+      "version",
+      "kind",
+      "inline_text",
+      "sha256",
+      "text_source",
+      "text_sha256"
+    ],
+    "feature": [
+      "feature_id",
+      "description",
+      "source_id",
+      "locator",
+      "support_status",
+      "claim_numbers",
+      "specification_locator",
+      "figure_node_ids",
+      "source_quote"
+    ],
+    "effect": [
+      "description",
+      "source_id",
+      "locator",
+      "metric",
+      "value",
+      "conditions",
+      "comparison"
+    ],
+    "term": [
+      "canonical_name",
+      "short_label",
+      "reference_number"
+    ],
+    "figure_edge": [
+      "figure_no",
+      "source_node",
+      "target_node",
+      "description",
+      "specification_locator"
+    ],
+    "artifact": [
+      "figure_no",
+      "path",
+      "renderer",
+      "sha256",
+      "spec_sha256"
+    ]
+  },
+  "artifacts": []
+}

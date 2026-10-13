@@ -1,0 +1,2 @@
+# Optional preview only; core tools use the Python standard library.
+CairoSVG>=2.7,<3

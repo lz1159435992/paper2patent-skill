@@ -1,0 +1,361 @@
+{
+  "sources": [
+    {
+      "source_id": "P1",
+      "kind": "original_technical",
+      "path": "synthetic-source.txt",
+      "sha256": "c71558118a9cf676df8edeb74d7970b4e3c0ec37e46a0d103416c03f94832794"
+    }
+  ],
+  "features": [
+    {
+      "feature_id": "F1",
+      "description": "传感器记录输入",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 3,
+        "end_line": 3
+      },
+      "source_quote": "S101 获取同一传感器的记录，每条记录包含传感器标识、时间戳和数值。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "S101"
+      },
+      "figure_node_ids": [
+        "图1:s101"
+      ]
+    },
+    {
+      "feature_id": "F2",
+      "description": "过滤与排序",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 4,
+        "end_line": 4
+      },
+      "source_quote": "S102 剔除缺失数值的记录，按时间戳升序排列有效记录。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1,
+        2
+      ],
+      "specification_locator": {
+        "anchor": "S102"
+      },
+      "figure_node_ids": [
+        "图1:s102"
+      ]
+    },
+    {
+      "feature_id": "F3",
+      "description": "完整窗口与尾部保留",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 5,
+        "end_line": 5
+      },
+      "source_quote": "S103 按配置的正整数N将有效记录划分为连续且不重叠的完整窗口；不足N条的尾部记录保留，等待后续输入。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1,
+        2
+      ],
+      "specification_locator": {
+        "anchor": "S103"
+      },
+      "figure_node_ids": [
+        "图1:s103"
+      ]
+    },
+    {
+      "feature_id": "F4",
+      "description": "窗口均值公式",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 6,
+        "end_line": 6
+      },
+      "source_quote": "S104 对当前完整窗口计算均值m_k=(1/N)Σ_{j=1}^{N}x_j，其中x_j为窗口内数值。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "m_k=(1/N)Σ_{j=1}^{N}x_j"
+      },
+      "figure_node_ids": [
+        "图1:s104"
+      ]
+    },
+    {
+      "feature_id": "F5",
+      "description": "配置阈值比较",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 7,
+        "end_line": 7
+      },
+      "source_quote": "S105 将窗口均值m_k与配置阈值θ比较。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "S105"
+      },
+      "figure_node_ids": [
+        "图1:s105"
+      ]
+    },
+    {
+      "feature_id": "F6",
+      "description": "报警标志分支",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 8,
+        "end_line": 8
+      },
+      "source_quote": "S106 窗口均值达到阈值时设置报警标志b_k=1，否则设置b_k=0。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "窗口均值达到阈值"
+      },
+      "figure_node_ids": [
+        "图1:s106"
+      ]
+    },
+    {
+      "feature_id": "F7",
+      "description": "结果记录与循环",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 9,
+        "end_line": 9
+      },
+      "source_quote": "S107 将窗口标识、窗口均值和报警标志写入结果记录；存在未处理的完整窗口时返回S104，否则结束。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1,
+        3
+      ],
+      "specification_locator": {
+        "anchor": "S107"
+      },
+      "figure_node_ids": [
+        "图1:s107"
+      ]
+    },
+    {
+      "feature_id": "F8",
+      "description": "分支效果边界",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 12,
+        "end_line": 12
+      },
+      "source_quote": "窗口均值达到阈值时设置报警标志，仅描述配置下的分支结果，不代表实测性能提升。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "不报告实验数据或技术效果增益"
+      },
+      "figure_node_ids": []
+    },
+    {
+      "feature_id": "F9",
+      "description": "完整窗口迭代终止",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 9,
+        "end_line": 9
+      },
+      "source_quote": "S107 将窗口标识、窗口均值和报警标志写入结果记录；存在未处理的完整窗口时返回S104，否则结束。",
+      "support_status": "supported",
+      "claim_numbers": [
+        1
+      ],
+      "specification_locator": {
+        "anchor": "存在未处理的完整窗口时返回S104"
+      },
+      "figure_node_ids": [
+        "图1:end"
+      ]
+    },
+    {
+      "feature_id": "F10",
+      "description": "处理顺序和窗口标识",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 13,
+        "end_line": 13
+      },
+      "source_quote": "过滤及排序发生在窗口划分之前；结果记录可以核对对应窗口标识。",
+      "support_status": "supported",
+      "claim_numbers": [
+        2,
+        3
+      ],
+      "specification_locator": {
+        "anchor": "过滤及排序发生在窗口划分之前"
+      },
+      "figure_node_ids": [
+        "图1:s102"
+      ]
+    },
+    {
+      "feature_id": "F11",
+      "description": "处理状态",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 10,
+        "end_line": 10
+      },
+      "source_quote": "处理状态由有效记录序列、窗口配置和下一个未处理窗口的索引组成。",
+      "support_status": "supported",
+      "claim_numbers": [
+        3
+      ],
+      "specification_locator": {
+        "anchor": "处理状态由有效记录序列"
+      },
+      "figure_node_ids": [
+        "图1:s103"
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "description": "基于窗口均值和配置阈值形成报警标志",
+      "source_id": "P1",
+      "locator": {
+        "start_line": 12,
+        "end_line": 12
+      },
+      "source_quote": "窗口均值达到阈值时设置报警标志，仅描述配置下的分支结果，不代表实测性能提升。",
+      "metric": null,
+      "value": null,
+      "conditions": "调用者给定N和θ，且窗口包含N条有效记录",
+      "comparison": null
+    }
+  ],
+  "terms": [
+    {
+      "canonical_name": "获取传感器记录",
+      "short_label": "S101 获取传感器记录",
+      "reference_number": "S101"
+    },
+    {
+      "canonical_name": "过滤并排序",
+      "short_label": "S102 过滤并排序",
+      "reference_number": "S102"
+    },
+    {
+      "canonical_name": "划分完整窗口",
+      "short_label": "S103 划分完整窗口",
+      "reference_number": "S103"
+    },
+    {
+      "canonical_name": "计算窗口均值",
+      "short_label": "S104 计算窗口均值",
+      "reference_number": "S104"
+    },
+    {
+      "canonical_name": "与配置阈值比较",
+      "short_label": "S105 与配置阈值比较",
+      "reference_number": "S105"
+    },
+    {
+      "canonical_name": "设置报警标志",
+      "short_label": "S106 设置报警标志",
+      "reference_number": "S106"
+    },
+    {
+      "canonical_name": "记录结果，还有完整窗口？",
+      "short_label": "S107 记录结果",
+      "reference_number": "S107"
+    }
+  ],
+  "figure_edges": [
+    {
+      "figure_no": "图1",
+      "source_node": "s101",
+      "target_node": "s102",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S102"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s102",
+      "target_node": "s103",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S103"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s103",
+      "target_node": "s104",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S104"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s104",
+      "target_node": "s105",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S105"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s105",
+      "target_node": "s106",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S106"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s106",
+      "target_node": "s107",
+      "description": "按披露顺序处理",
+      "specification_locator": {
+        "anchor": "S107"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s107",
+      "target_node": "s104",
+      "description": "存在未处理窗口时继续",
+      "specification_locator": {
+        "anchor": "存在未处理的完整窗口时返回S104"
+      }
+    },
+    {
+      "figure_no": "图1",
+      "source_node": "s107",
+      "target_node": "end",
+      "description": "否则结束",
+      "specification_locator": {
+        "anchor": "否则结束"
+      }
+    }
+  ],
+  "unresolved": []
+}

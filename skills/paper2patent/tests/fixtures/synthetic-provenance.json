@@ -1,0 +1,11 @@
+{
+  "case": "Synthetic sensor window integration",
+  "material_type": "synthetic_technical_disclosure",
+  "origin_file": "synthetic-source.txt",
+  "origin_sha256": "c71558118a9cf676df8edeb74d7970b4e3c0ec37e46a0d103416c03f94832794",
+  "license": "MIT",
+  "copyright_holder": "lz1159435992",
+  "redistribution": "Permitted under the bundled MIT license.",
+  "contains_real_paper_or_experiment": false,
+  "scope": "Mechanical integration of claims, source records, formulas and SVG delivery; not a paper, model benchmark or patentability assessment."
+}

@@ -1,0 +1,50 @@
+{
+  "figure_no": "图1",
+  "title": "论文转专利方法流程图",
+  "diagram_type": "flowchart",
+  "nodes": [
+    {
+      "id": "s101",
+      "label": "S101 获取论文标题、摘要与方法描述",
+      "shape": "process"
+    },
+    {
+      "id": "s102",
+      "label": "S102 提取区别点、技术问题与技术效果",
+      "shape": "process"
+    },
+    {
+      "id": "s103",
+      "label": "S103 生成权利要求书与说明书草稿",
+      "shape": "process"
+    },
+    {
+      "id": "s104",
+      "label": "S104 生成附图方案或黑白附图文件",
+      "shape": "process"
+    },
+    {
+      "id": "s105",
+      "label": "S105 校验权项语言与附图一致性",
+      "shape": "process"
+    }
+  ],
+  "edges": [
+    [
+      "s101",
+      "s102"
+    ],
+    [
+      "s102",
+      "s103"
+    ],
+    [
+      "s103",
+      "s104"
+    ],
+    [
+      "s104",
+      "s105"
+    ]
+  ]
+}
